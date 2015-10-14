@@ -1,0 +1,6 @@
+schematics mss-crossover.prj
+output-name ../pcb/mss-crossover
+skip-m4
+elements-dir ../../ise-footprints
+
+
