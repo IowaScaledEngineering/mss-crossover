@@ -1152,7 +1152,7 @@ Element["" "modular_8p8c_lp.fp" "J1" "unknown" 2100.00mil 1265.00mil -478.43mil 
 	Attribute("dist-license" "CC-BY-SA-3.0")
 	Attribute("height" "11.5mm")
 	Attribute("ref" "Molex document number 50-95501-001 R/A low profile pc jack 4,6,8 ckrs site through hole version")
-	Pin[-250.00mil 175.00mil 70.00mil 20.00mil 76.00mil 30.00mil "1" "1" "edge2"]
+	Pin[-250.00mil 175.00mil 70.00mil 28.00mil 76.00mil 30.00mil "1" "1" "edge2"]
 	Pin[-350.00mil 125.00mil 70.00mil 20.00mil 76.00mil 30.00mil "2" "2" "edge2"]
 	Pin[-250.00mil 75.00mil 70.00mil 20.00mil 76.00mil 30.00mil "3" "3" "edge2"]
 	Pin[-350.00mil 25.00mil 70.00mil 20.00mil 76.00mil 30.00mil "4" "4" "edge2"]
