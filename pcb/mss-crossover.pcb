@@ -821,8 +821,6 @@ Via[865.00mil 690.00mil 40.00mil 0.0000 0.0000 20.00mil "" ""]
 Via[715.00mil 825.00mil 40.00mil 0.0000 0.0000 20.00mil "" ""]
 Via[765.00mil 825.00mil 40.00mil 0.0000 0.0000 20.00mil "" ""]
 Via[815.00mil 825.00mil 40.00mil 0.0000 0.0000 20.00mil "" ""]
-Via[930.00mil 465.00mil 40.00mil 0.0000 0.0000 20.00mil "" ""]
-Via[930.00mil 410.00mil 40.00mil 0.0000 0.0000 20.00mil "" ""]
 Via[1050.00mil 775.00mil 40.00mil 0.0000 0.0000 20.00mil "" ""]
 Via[1655.00mil 1465.00mil 40.00mil 20.00mil 0.0000 20.00mil "" ""]
 Via[1655.00mil 1415.00mil 40.00mil 20.00mil 0.0000 20.00mil "" ""]
@@ -863,8 +861,9 @@ Via[920.00mil 690.00mil 40.00mil 0.0000 0.0000 20.00mil "" ""]
 Via[375.00mil 270.00mil 40.00mil 0.0000 0.0000 20.00mil "" ""]
 Via[375.00mil 320.00mil 40.00mil 0.0000 0.0000 20.00mil "" ""]
 Via[375.00mil 370.00mil 40.00mil 0.0000 0.0000 20.00mil "" ""]
-Via[375.00mil 70.00mil 40.00mil 0.0000 0.0000 20.00mil "" "selected"]
-Via[375.00mil 120.00mil 40.00mil 0.0000 0.0000 20.00mil "" "selected"]
+Via[375.00mil 70.00mil 40.00mil 0.0000 0.0000 20.00mil "" ""]
+Via[375.00mil 120.00mil 40.00mil 0.0000 0.0000 20.00mil "" ""]
+Via[770.00mil 510.00mil 40.00mil 0.0000 0.0000 20.00mil "" ""]
 
 Element["" "0805" "C10" "1uF" 1585.00mil 41.4129mm -36.93mil -107.36mil 0 100 ""]
 (
@@ -875,7 +874,7 @@ Element["" "0805" "C10" "1uF" 1585.00mil 41.4129mm -36.93mil -107.36mil 0 100 ""
 
 	)
 
-Element["" "RPACK2-0606" "R8" "1k" 26.5239mm 381.52mil -118.16mil -60.77mil 0 100 ""]
+Element["" "RPACK2-0606" "R8" "1k" 26.5239mm 381.52mil -53.16mil 74.23mil 0 100 ""]
 (
 	Pad[15.75mil -42.83mil 15.75mil -24.13mil 16.73mil 20.00mil 22.73mil "1" "1" "square"]
 	Pad[-15.75mil -42.83mil -15.75mil -24.13mil 16.73mil 20.00mil 22.73mil "2" "2" "square"]
@@ -918,7 +917,7 @@ Element["" "0805" "C6" "1uF" 1300.00mil 410.00mil 47.64mil 18.50mil 0 85 ""]
 Element["" "0805" "C5" "1uF" 37.0731mm 535.00mil -41.50mil -86.50mil 0 80 ""]
 (
 	Pad[-35.43mil -3.93mil -35.43mil 3.93mil 51.18mil 20.00mil 57.18mil "1" "1" "square"]
-	Pad[35.43mil -3.93mil 35.43mil 3.93mil 51.18mil 20.00mil 57.18mil "2" "2" "square"]
+	Pad[35.43mil -3.93mil 35.43mil 3.93mil 51.18mil 0.0000 57.18mil "2" "2" "square"]
 	ElementLine [-3.93mil -27.55mil 3.93mil -27.55mil 10.00mil]
 	ElementLine [-3.93mil 27.55mil 3.93mil 27.55mil 10.00mil]
 
@@ -1099,7 +1098,7 @@ Element["" "TC2030-NL" "J4" "unknown" 1585.00mil 1030.00mil -125.00mil 255.00mil
 
 	)
 
-Element["" "0805" "C2" "1uF" 935.00mil 560.43mil -102.36mil -131.93mil 0 100 ""]
+Element["" "0805" "C2" "1uF" 935.00mil 560.43mil -107.36mil -71.93mil 0 100 ""]
 (
 	Pad[-3.93mil 35.43mil 3.93mil 35.43mil 51.18mil 20.00mil 57.18mil "1" "1" "square"]
 	Pad[-3.93mil -35.43mil 3.93mil -35.43mil 51.18mil 0.0000 57.18mil "2" "2" "square"]
@@ -1236,7 +1235,7 @@ Element["" "RPACK4-1206" "R4" "10k" 2235.00mil 715.00mil 89.02mil 11.50mil 0 100
 
 	)
 
-Element["" "cap-elec-Panasonic-FK--D6.30-H5.80-mm" "C1" "68uF" 545.00mil 195.00mil 109.21mil 104.53mil 0 100 ""]
+Element["" "cap-elec-Panasonic-FK--D6.30-H5.80-mm" "C1" "68uF" 545.00mil 195.00mil -250.79mil 99.53mil 0 100 ""]
 (
 	Pad[66.93mil 0.0000 129.92mil 0.0000 63.00mil 30.00mil 69.00mil "1" "1" "square,edge2"]
 	Pad[-129.92mil 0.0000 -66.93mil 0.0000 63.00mil 0.0000 69.00mil "2" "2" "square"]
@@ -1299,7 +1298,7 @@ Element["" "0805" "C7" "0.1uF" 1515.00mil 670.00mil -36.50mil 73.50mil 0 100 ""]
 
 	)
 
-Element["" "0805" "C8" "0.1uF" 1050.00mil 630.00mil -26.50mil -131.50mil 0 100 ""]
+Element["" "0805" "C8" "0.1uF" 1050.00mil 630.00mil -86.50mil 68.50mil 0 100 ""]
 (
 	Pad[-3.93mil -35.43mil 3.93mil -35.43mil 51.18mil 20.00mil 57.18mil "1" "1" "square"]
 	Pad[-3.93mil 35.43mil 3.93mil 35.43mil 51.18mil 0.0000 57.18mil "2" "2" "square"]
@@ -1317,7 +1316,7 @@ Element["" "0805" "C9" "1uF" 1180.00mil 410.00mil -86.50mil 33.50mil 0 80 ""]
 
 	)
 
-Element["" "SOT89" "U2" "unknown" 765.00mil 640.79mil -34.90mil -160.79mil 0 100 ""]
+Element["" "SOT89" "U2" "unknown" 765.00mil 640.79mil -199.90mil 179.21mil 0 100 ""]
 (
 	Pad[59.06mil -59.84mil 59.06mil -18.90mil 37.80mil 20.00mil 43.80mil "1" "1" "pin,square"]
 	Pad[0.0000 -59.84mil 0.0000 58.26mil 37.80mil 0.0000 43.80mil "2" "2" "pin,square"]
@@ -1460,7 +1459,7 @@ Layer(1 "component")
 	Line[794.14mil 124.14mil 750.86mil 124.14mil 10.00mil 32.00mil "clearline"]
 	Line[750.86mil 124.14mil 735.00mil 140.00mil 10.00mil 32.00mil "clearline"]
 	Line[33.7939mm 585.79mil 37.9931mm 585.79mil 10.00mil 20.00mil "clearline"]
-	Line[1495.00mil 470.00mil 1495.00mil 535.00mil 10.00mil 20.00mil "clearline"]
+	Line[1495.00mil 470.00mil 1495.00mil 535.00mil 10.00mil 20.00mil ""]
 	Line[31.1191mm 539.53mil 31.1191mm 12.4610mm 10.00mil 20.00mil "clearline"]
 	Line[1180.00mil 374.57mil 1300.00mil 374.57mil 25.00mil 20.00mil "clearline"]
 	Line[1640.00mil 720.00mil 1675.00mil 720.00mil 10.00mil 20.00mil "clearline"]
@@ -1842,6 +1841,11 @@ Layer(5 "silk")
 	Line[2495.00mil 5.00mil 5.00mil 5.00mil 10.00mil 20.00mil "clearline"]
 	Line[5.00mil 5.00mil 5.00mil 1895.00mil 10.00mil 20.00mil "clearline"]
 	Line[335.00mil 1665.00mil 1035.00mil 1665.00mil 10.00mil 20.00mil "clearline"]
+	Line[720.00mil 300.00mil 700.00mil 280.00mil 10.00mil 20.00mil "clearline"]
+	Line[720.00mil 300.00mil 700.00mil 320.00mil 10.00mil 20.00mil "clearline"]
+	Arc[725.00mil 340.00mil 45.00mil 45.00mil 10.00mil 20.00mil 180 -90 "clearline"]
+	Arc[725.00mil 340.00mil 45.00mil 45.00mil 10.00mil 20.00mil 90 -90 "clearline"]
+	Arc[720.00mil 340.00mil 40.00mil 40.00mil 10.00mil 20.00mil 0 -90 "clearline"]
 	Text[940.00mil 40.00mil 0 85 "ACT" "clearline"]
 	Text[2425.00mil 1420.00mil 1 110 "MSS A End" "clearline"]
 	Text[75.00mil 1120.00mil 3 110 "MSS B End" "clearline"]
@@ -1855,6 +1859,8 @@ Layer(5 "silk")
 	Text[345.00mil 1590.00mil 0 100 "Iowa Scaled Engineering" "clearline"]
 	Text[345.00mil 1800.00mil 0 100 "http://www.iascaled.com" "clearline"]
 	Text[840.00mil 235.00mil 0 100 "+" "clearline"]
+	Text[805.00mil 320.00mil 0 100 "MORE" "clearline"]
+	Text[660.00mil 395.00mil 0 100 "SENSITIVE" "clearline,selected"]
 )
 NetList()
 (
