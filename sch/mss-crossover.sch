@@ -413,7 +413,7 @@ T 45400 55200 5 10 1 1 180 0 1
 value=330
 }
 T 44100 56200 9 10 1 0 0 0 2
-Note: R23 prevents current pushed through the feedback networks of
+Note: R2 prevents current pushed through the feedback networks of
  the op-amps from affecting the 1.2V reference rail
 C 41400 56300 1 0 0 5V-plus-1.sym
 N 42000 55800 41600 55800 4
