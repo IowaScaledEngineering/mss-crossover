@@ -172,22 +172,22 @@ void setOccupancyOff()
 
 void setOccupancyLEDOn()
 {
-	PORTD |= _BV(PD3);
+	PORTD |= _BV(PD4);
 }
 
 void setOccupancyLEDOff()
 {
-	PORTD &= ~_BV(PD3);
+	PORTD &= ~_BV(PD4);
 }
 
 void setAuxLEDOn()
 {
-	PORTD |= _BV(PD4);
+	PORTD |= _BV(PD3);
 }
 
 void setAuxLEDOff()
 {
-	PORTD &= ~_BV(PD4);
+	PORTD &= ~_BV(PD3);
 }
 
 
@@ -274,11 +274,6 @@ int main(void)
 			// positive logic 
 			debounceInputs(&auxDetectInputState, ((~PINA) & 0x01));
 
-			if (detectorStatus)
-				setOccupancyLEDOn();
-			else
-				setOccupancyLEDOff();
-
 			if (detectorStatus || auxDetectInputState)
 				setOccupancyOn();
 			else
@@ -304,9 +299,27 @@ int main(void)
 			conversionCounter = 0;
 
 		if (conversionCounter < 5)
+		{
 			setAuxLEDOff();
+
+			if (detectorStatus)
+				setOccupancyLEDOn();
+			else if (auxDetectInputState)
+				setOccupancyLEDOff();				
+			else
+				setOccupancyLEDOff();
+		}
 		else
+		{
 			setAuxLEDOn();
+
+			if (detectorStatus)
+				setOccupancyLEDOn();
+			else if (auxDetectInputState)
+				setOccupancyLEDOn();
+			else
+				setOccupancyLEDOff();
+		}
 	}
 }
 
