@@ -172,22 +172,22 @@ void setOccupancyOff()
 
 void setOccupancyLEDOn()
 {
-	PORTD |= _BV(PD4);
+	PORTD |= _BV(PD3);
 }
 
 void setOccupancyLEDOff()
 {
-	PORTD &= ~_BV(PD4);
+	PORTD &= ~_BV(PD3);
 }
 
 void setAuxLEDOn()
 {
-	PORTD |= _BV(PD3);
+	PORTD |= _BV(PD4);
 }
 
 void setAuxLEDOff()
 {
-	PORTD &= ~_BV(PD3);
+	PORTD &= ~_BV(PD4);
 }
 
 
