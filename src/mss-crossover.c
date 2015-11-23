@@ -1,8 +1,11 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <avr/wdt.h>
+#include <avr/eeprom.h>
 #include <util/delay.h>
+#include <avr/wdt.h>
 
+#define CHANNEL0_ON_DELAY   0x00
+#define CHANNEL0_OFF_DELAY  0x01
 
 volatile uint8_t eventFlags = 0;
 #define EVENT_DO_BD_READ 0x01
@@ -29,6 +32,27 @@ void initializeADC()
 	ADCSRB = 0x00; // Free running mode
 	DIDR0  = 0x03;  // Turn ADC pins 0-1 into analog inputs
 	ADCSRA |= _BV(ADEN) | _BV(ADSC) | _BV(ADIE) | _BV(ADIF);
+}
+
+
+void initializeDelays()
+{
+	detectorOnDelay = eeprom_read_byte((uint8_t*)(CHANNEL0_ON_DELAY));
+	if (0xFF == detectorOnDelay || 0x00 == detectorOnDelay)
+	{
+		eeprom_write_byte((uint8_t*)(CHANNEL0_ON_DELAY), 4);
+		detectorOnDelay = eeprom_read_byte((uint8_t*)(CHANNEL0_ON_DELAY));
+	}	
+
+
+	detectorOffDelay = eeprom_read_byte((uint8_t*)(CHANNEL0_OFF_DELAY));
+	if (0xFF == detectorOffDelay || 0x00 == detectorOffDelay)
+	{
+		eeprom_write_byte((uint8_t*)(CHANNEL0_OFF_DELAY), 25);
+		detectorOffDelay = eeprom_read_byte((uint8_t*)(CHANNEL0_OFF_DELAY));
+	}	
+
+
 }
 
 ISR(ADC_vect)
@@ -256,6 +280,8 @@ int main(void)
 
 	initialize10HzTimer();
 	initializeADC();
+	initializeDelays();
+
 	sei();
 
 	while(1)
