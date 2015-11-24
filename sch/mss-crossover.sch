@@ -354,7 +354,7 @@ footprint=0805
 T 50000 59000 5 10 1 1 90 0 1
 refdes=R1
 T 50500 59000 5 10 1 1 90 0 1
-value=1k
+value=330
 }
 N 50200 59700 50200 60100 4
 C 50400 57800 1 90 0 led-3.sym
@@ -782,3 +782,8 @@ footprint=JUMPER2
 N 45200 47700 45200 46900 4
 N 45200 46900 45300 46900 4
 N 45300 46500 44400 46500 4
+T 45100 45300 9 10 1 0 0 0 4
+JP1 connects MSS bus pin 7 to MSS Ground
+In the 2.0.0 spec, pin 7 is optionally ground, optionally 
+some other vendor-specific use.
+
