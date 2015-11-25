@@ -1022,7 +1022,7 @@ Element["" "0805" "D1" "unknown" 885.00mil 160.00mil -11.93mil 73.50mil 0 100 ""
 
 	)
 
-Element["" "0805" "R1" "1k" 794.14mil 159.57mil -25.21mil 73.07mil 0 100 ""]
+Element["" "0805" "R1" "330" 794.14mil 159.57mil -25.21mil 73.07mil 0 100 ""]
 (
 	Pad[-3.93mil 35.43mil 3.93mil 35.43mil 51.18mil 20.00mil 57.18mil "1" "1" "square"]
 	Pad[-3.93mil -35.43mil 3.93mil -35.43mil 51.18mil 20.00mil 57.18mil "2" "2" "square"]
@@ -1403,10 +1403,10 @@ Element["" "SOT23_MOS" "Q2" "BSS138" 1730.00mil 1750.00mil 10.00mil 40.00mil 0 1
 
 Element["" "0805" "R10" "10k" 1585.00mil 1760.00mil -41.93mil 43.93mil 0 100 ""]
 (
-	Pad[-35.43mil -3.93mil -35.43mil 3.93mil 51.18mil 20.00mil 57.18mil "1" "1" "square"]
-	Pad[35.43mil -3.93mil 35.43mil 3.93mil 51.18mil 20.00mil 57.18mil "2" "2" "square"]
-	ElementLine [-3.93mil -27.55mil 3.93mil -27.55mil 10.00mil]
+	Pad[35.43mil -3.93mil 35.43mil 3.93mil 51.18mil 20.00mil 57.18mil "1" "1" "square"]
+	Pad[-35.43mil -3.93mil -35.43mil 3.93mil 51.18mil 20.00mil 57.18mil "2" "2" "square"]
 	ElementLine [-3.93mil 27.55mil 3.93mil 27.55mil 10.00mil]
+	ElementLine [-3.93mil -27.55mil 3.93mil -27.55mil 10.00mil]
 
 	)
 
@@ -1729,7 +1729,6 @@ Layer(1 "component")
 	Line[1585.00mil 955.00mil 1605.00mil 935.00mil 10.00mil 20.00mil "clearline"]
 	Line[1605.00mil 935.00mil 1680.00mil 935.00mil 10.00mil 20.00mil "clearline"]
 	Line[1185.00mil 1680.00mil 1245.00mil 1680.00mil 10.00mil 20.00mil "clearline"]
-	Line[1245.00mil 1680.00mil 1305.00mil 1740.00mil 10.00mil 20.00mil "clearline"]
 	Line[1675.00mil 975.00mil 1945.00mil 975.00mil 10.00mil 20.00mil "clearline"]
 	Line[1620.00mil 975.00mil 1620.00mil 1005.00mil 10.00mil 20.00mil "clearline"]
 	Line[1620.00mil 1005.00mil 1640.00mil 1025.00mil 10.00mil 20.00mil "clearline"]
@@ -1752,21 +1751,7 @@ Layer(1 "component")
 	Line[1915.00mil 1140.00mil 1850.00mil 1140.00mil 25.00mil 20.00mil "clearline"]
 	Line[1050.00mil 1595.00mil 1900.00mil 1595.00mil 25.00mil 20.00mil "clearline"]
 	Line[1900.00mil 1595.00mil 1927.50mil 1567.50mil 25.00mil 20.00mil "clearline"]
-	Line[1760.00mil 1800.00mil 42.1749mm 1800.00mil 10.00mil 20.00mil "clearline"]
-	Line[42.1749mm 1800.00mil 41.1589mm 1760.00mil 10.00mil 20.00mil "clearline"]
 	Line[1730.00mil 1750.00mil 1730.00mil 1800.00mil 10.00mil 20.00mil "clearline"]
-	Line[39.3591mm 1760.00mil 1325.00mil 1760.00mil 10.00mil 20.00mil "clearline"]
-	Line[1325.00mil 1760.00mil 1282.50mil 1717.50mil 10.00mil 20.00mil "clearline"]
-	Line[1680.00mil 1705.00mil 1565.00mil 1705.00mil 10.00mil 20.00mil "clearline"]
-	Line[1565.00mil 1705.00mil 1550.00mil 1720.00mil 10.00mil 20.00mil "clearline"]
-	Line[1550.00mil 1720.00mil 1550.00mil 44.6931mm 10.00mil 20.00mil "clearline"]
-	Line[1550.00mil 44.6931mm 39.3591mm 1760.00mil 10.00mil 20.00mil "clearline"]
-	Line[1675.00mil 1705.00mil 1760.00mil 1705.00mil 10.00mil 20.00mil "clearline"]
-	Line[1760.00mil 1705.00mil 1770.00mil 1695.00mil 10.00mil 20.00mil "clearline"]
-	Line[1770.00mil 1695.00mil 1770.00mil 1669.00mil 10.00mil 20.00mil "clearline"]
-	Line[1770.00mil 1669.00mil 1769.00mil 1668.00mil 10.00mil 20.00mil "clearline"]
-	Line[41.1589mm 42.0479mm 41.1589mm 43.2961mm 10.00mil 20.00mil "clearline"]
-	Line[41.1589mm 43.2961mm 1620.00mil 1705.00mil 10.00mil 20.00mil "clearline"]
 	Line[1945.00mil 1675.00mil 1945.00mil 1605.00mil 25.00mil 20.00mil "clearline"]
 	Line[1945.00mil 1605.00mil 1917.50mil 1577.50mil 25.00mil 20.00mil "clearline"]
 	Line[1935.00mil 995.00mil 1985.00mil 1045.00mil 10.00mil 20.00mil "clearline"]
@@ -1786,6 +1771,31 @@ Layer(1 "component")
 	Line[1808.00mil 1750.00mil 1808.00mil 1803.00mil 10.00mil 20.00mil "clearline"]
 	Line[1808.00mil 1803.00mil 1855.00mil 1850.00mil 10.00mil 20.00mil "clearline"]
 	Line[1855.00mil 1850.00mil 1905.00mil 1850.00mil 10.00mil 20.00mil "clearline"]
+	Line[41.1589mm 1760.00mil 41.1589mm 44.6931mm 10.00mil 20.00mil "clearline"]
+	Line[41.1589mm 44.6931mm 1665.00mil 1715.00mil 10.00mil 20.00mil "clearline"]
+	Line[1665.00mil 1715.00mil 1790.00mil 1715.00mil 10.00mil 20.00mil "clearline"]
+	Line[1808.00mil 1755.00mil 1808.00mil 1728.00mil 10.00mil 20.00mil "clearline"]
+	Line[1808.00mil 1728.00mil 1795.00mil 1715.00mil 10.00mil 20.00mil "clearline"]
+	Line[1795.00mil 1715.00mil 1770.00mil 1715.00mil 10.00mil 20.00mil "clearline"]
+	Line[1740.00mil 1800.00mil 1670.00mil 1800.00mil 10.00mil 20.00mil "clearline"]
+	Line[1670.00mil 1800.00mil 1660.00mil 1810.00mil 10.00mil 20.00mil "clearline"]
+	Line[1660.00mil 1810.00mil 1555.00mil 1810.00mil 10.00mil 20.00mil "clearline"]
+	Line[1555.00mil 1810.00mil 1550.00mil 1805.00mil 10.00mil 20.00mil "clearline"]
+	Line[1550.00mil 1805.00mil 1550.00mil 44.7149mm 10.00mil 20.00mil "clearline"]
+	Line[1550.00mil 44.7149mm 39.3591mm 1760.00mil 10.00mil 20.00mil "clearline"]
+	Line[41.1589mm 42.0479mm 44.6133mm 42.0479mm 10.00mil 20.00mil "clearline"]
+	Line[44.6133mm 42.0479mm 1769.00mil 1668.00mil 10.00mil 20.00mil "clearline"]
+	Line[41.1589mm 42.0479mm 41.1589mm 43.0421mm 10.00mil 20.00mil "clearline"]
+	Line[41.1589mm 43.0421mm 1605.00mil 1710.00mil 10.00mil 20.00mil "clearline"]
+	Line[1605.00mil 1710.00mil 1520.00mil 1710.00mil 10.00mil 20.00mil "clearline"]
+	Line[1520.00mil 1710.00mil 1500.00mil 1730.00mil 10.00mil 20.00mil "clearline"]
+	Line[1500.00mil 1730.00mil 1500.00mil 1785.00mil 10.00mil 20.00mil "clearline"]
+	Line[1500.00mil 1785.00mil 1480.00mil 1805.00mil 10.00mil 20.00mil "clearline"]
+	Line[1480.00mil 1805.00mil 1280.00mil 1805.00mil 10.00mil 20.00mil "clearline"]
+	Line[1280.00mil 1805.00mil 1260.00mil 1785.00mil 10.00mil 20.00mil "clearline"]
+	Line[1260.00mil 1785.00mil 1260.00mil 1695.00mil 10.00mil 20.00mil "clearline"]
+	Line[1260.00mil 1695.00mil 1245.00mil 1680.00mil 10.00mil 20.00mil "clearline"]
+	Line[1245.00mil 1680.00mil 1235.00mil 1680.00mil 10.00mil 20.00mil "clearline"]
 	Polygon("clearpoly")
 	(
 		[385.00mil 15.00mil] [1360.00mil 15.00mil] [1360.00mil 340.00mil] [385.00mil 340.00mil] 
@@ -2045,7 +2055,6 @@ NetList()
 		Connect("C10-1")
 		Connect("J5-1")
 		Connect("Q2-D")
-		Connect("R10-1")
 	)
 	Net("SCK" "(unknown)")
 	(
@@ -2144,6 +2153,7 @@ NetList()
 	Net("unnamed_net17" "(unknown)")
 	(
 		Connect("Q2-S")
+		Connect("R10-1")
 		Connect("U5-19")
 	)
 	Net("unnamed_net18" "(unknown)")
