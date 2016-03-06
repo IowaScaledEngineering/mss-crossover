@@ -218,7 +218,6 @@ void setAuxLEDOff()
 int main(void)
 {
 	uint8_t auxDetectInputState = 0;
-	uint8_t conversionCounter = 0;
 
 	// Deal with watchdog first thing
 	MCUSR = 0;					// Clear reset status
@@ -308,7 +307,6 @@ int main(void)
 
 			// Clear the flag and start the next chain of conversions
 			eventFlags &= ~(EVENT_DO_BD_READ);
-			conversionCounter++;
 		}
 
 		if (EVENT_DO_ADC_RUN == (eventFlags & (EVENT_DO_ADC_RUN | EVENT_DO_BD_READ)))
@@ -319,12 +317,10 @@ int main(void)
 		}
 
 
-		// This should provide roughly a 1Hz blink rate, based on 10 conversions per second out of the ADC
-		// code.  It provides a nice proof of life that the ADC is actually doing its thing and is alive.
-		if(conversionCounter >= 10)
-			conversionCounter = 0;
+		// This should provide roughly a 1Hz blink rate
+		// It provides a nice proof of life that the ADC is actually doing its thing and is alive.
 
-		if (conversionCounter < 5)
+		if (eventFlags & EVENT_1HZ_BLINK)
 		{
 			setAuxLEDOff();
 
