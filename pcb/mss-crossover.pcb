@@ -1840,6 +1840,10 @@ Layer(1 "component")
 	(
 		[1045.00mil 1885.00mil] [1905.00mil 1885.00mil] [1905.00mil 1575.00mil] [1045.00mil 1575.00mil] 
 	)
+	Polygon("clearpoly")
+	(
+		[2485.00mil 1885.00mil] [1990.00mil 1885.00mil] [1990.00mil 1440.00mil] [2485.00mil 1440.00mil] 
+	)
 )
 Layer(2 "solder")
 (
@@ -1916,7 +1920,7 @@ Layer(4 "silk")
 Layer(5 "silk")
 (
 	Line[5.00mil 1895.00mil 2495.00mil 1895.00mil 10.00mil 20.00mil "clearline"]
-	Line[2495.00mil 1895.00mil 2495.00mil 5.00mil 10.00mil 20.00mil "clearline"]
+	Line[2495.00mil 1895.00mil 2495.00mil 5.00mil 10.00mil 20.00mil "clearline,selected"]
 	Line[2495.00mil 5.00mil 5.00mil 5.00mil 10.00mil 20.00mil "clearline"]
 	Line[5.00mil 5.00mil 5.00mil 1895.00mil 10.00mil 20.00mil "clearline"]
 	Line[335.00mil 1665.00mil 1035.00mil 1665.00mil 10.00mil 20.00mil "clearline"]
@@ -1942,7 +1946,7 @@ Layer(5 "silk")
 	Text[345.00mil 1675.00mil 0 100 "MSS-CROSSOVER v1.1" "clearline"]
 	Text[775.00mil 330.00mil 0 100 "MORE" "clearline"]
 	Text[630.00mil 405.00mil 0 100 "SENSITIVE" "clearline"]
-	Text[345.00mil 1740.00mil 0 100 "CC BY-SA (C) 2016" "clearline,selected"]
+	Text[345.00mil 1740.00mil 0 100 "CC BY-SA (C) 2016" "clearline"]
 )
 NetList()
 (
