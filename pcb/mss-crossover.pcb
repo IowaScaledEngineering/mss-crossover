@@ -965,7 +965,7 @@ Element["" "QFN32_5x5_0.5" "U5" "unknown" 1235.00mil 635.00mil -120.00mil 130.00
 	Pad[-29.53mil -2.6350mm -29.53mil -87.20mil 9.06mil 20.00mil 15.06mil "30" "30" "square"]
 	Pad[-49.21mil -2.6350mm -49.21mil -87.20mil 9.06mil 20.00mil 15.06mil "31" "31" "square"]
 	Pad[-68.90mil -2.6350mm -68.90mil -87.20mil 9.06mil 20.00mil 15.06mil "32" "32" "square"]
-	Pad[0.0000 0.0000 0.0000 0.0000 106.30mil 20.00mil 128.05mil "33" "33" "square,edge2"]
+	Pad[0.0000 0.0000 0.0000 0.0000 2.0000mm 20.00mil 84.74mil "33" "33" "square,edge2"]
 	Pad[0.0000 0.0000 0.0000 0.0000 122.05mil 20.00mil 128.05mil "33" "33" "square,edge2,nopaste"]
 	ElementLine [-118.11mil -118.11mil 118.11mil -118.11mil 10.00mil]
 	ElementLine [118.11mil -118.11mil 118.11mil 118.11mil 10.00mil]
@@ -1950,10 +1950,10 @@ Layer(5 "silk")
 	Text[2015.00mil 1760.00mil 0 100 "Pin 7" "clearline"]
 	Text[2010.00mil 1700.00mil 0 100 "RJ45" "clearline"]
 	Text[2010.00mil 1820.00mil 0 100 "To GND" "clearline"]
-	Text[345.00mil 1675.00mil 0 100 "MSS-CROSSOVER v1.1" "clearline"]
+	Text[345.00mil 1675.00mil 0 100 "MSS-CROSSOVER v1.2" "clearline"]
 	Text[775.00mil 330.00mil 0 100 "MORE" "clearline"]
 	Text[630.00mil 405.00mil 0 100 "SENSITIVE" "clearline"]
-	Text[345.00mil 1740.00mil 0 100 "CC BY-SA (C) 2016" "clearline"]
+	Text[345.00mil 1740.00mil 0 100 "CC BY-SA (C) 2017" "clearline"]
 )
 NetList()
 (
