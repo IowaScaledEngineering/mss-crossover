@@ -72,7 +72,7 @@ void initializeDelays()
 	adcValue[ADC_CHANNEL_SETPOINT_0] = readThresholdCalibration();
 	if (adcValue[ADC_CHANNEL_SETPOINT_0] > 1023 || 0x00 == adcValue[ADC_CHANNEL_SETPOINT_0])
 	{
-		writeThresholdCalibration(0x007F); // Arbitrary
+		writeThresholdCalibration(0x001D); // Arbitrary - roughly a 10k resistor on my test track
 		adcValue[ADC_CHANNEL_SETPOINT_0] = readThresholdCalibration();
 	}
 }
@@ -336,10 +336,15 @@ int main(void)
 					calibrationAccumulator += adcValue[ADC_CHANNEL_DETECTOR_0];
 				} else {
 					// last calibration cycle, store values
-					calibrationAccumulator = (47 * calibrationAccumulator) / (50 * CALIBRATION_CYCLES);
-					if (calibrationAccumulator > 5)
-						calibrationAccumulator -= 5;
-					writeThresholdCalibration(calibrationAccumulator);
+					uint32_t threshold = (calibrationAccumulator) / (CALIBRATION_CYCLES);
+					uint32_t ninetyPercentThreshold = (9 * calibrationAccumulator) / (10 * CALIBRATION_CYCLES);
+					
+					if (threshold - ninetyPercentThreshold < 8 && threshold >= 9) // 5 is the hysteresis threshold
+						threshold -= 8;
+					else 
+						threshold = ninetyPercentThreshold;
+
+					writeThresholdCalibration(threshold);
 					adcValue[ADC_CHANNEL_SETPOINT_0] = readThresholdCalibration();
 					eventFlags &= ~(EVENT_CALIBRATION_MODE);
 					setAuxLEDOff();
