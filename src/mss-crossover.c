@@ -4,13 +4,20 @@
 #include <util/delay.h>
 #include <avr/wdt.h>
 
-#define CHANNEL0_ON_DELAY   0x00
-#define CHANNEL0_OFF_DELAY  0x01
+#define CHANNEL0_ON_DELAY     0x00
+#define CHANNEL0_OFF_DELAY    0x01
+#define CHANNEL0_THRESHOLD_H  0x02
+#define CHANNEL0_THRESHOLD_L  0x03
 
 volatile uint8_t eventFlags = 0;
-#define EVENT_DO_BD_READ 0x01
-#define EVENT_DO_ADC_RUN 0x02
-#define EVENT_1HZ_BLINK  0x04
+#define EVENT_DO_BD_READ        0x01
+#define EVENT_DO_ADC_RUN        0x02
+#define EVENT_1HZ_BLINK         0x04
+#define EVENT_CALIBRATION_MODE  0x08
+#define EVENT_TICK              0x10
+
+#define CALIBRATION_CYCLES        16
+#define CALIBRATION_BUTTON_DELAY  20
 
 uint8_t detectorOnDelayCount = 0;
 uint8_t detectorOffDelayCount = 0;
@@ -30,10 +37,20 @@ void initializeADC()
 	ADMUX  = 0x40;  // AVCC reference, ADC0 starting channel
 	ADCSRA = _BV(ADIF) | _BV(ADPS2) | _BV(ADPS1); // 64 prescaler, ~8.3kconv / s
 	ADCSRB = 0x00; // Free running mode
-	DIDR0  = 0x03;  // Turn ADC pins 0-1 into analog inputs
+	DIDR0  = 0x01;  // Turn ADC pins 0 into analog input
 	ADCSRA |= _BV(ADEN) | _BV(ADSC) | _BV(ADIE) | _BV(ADIF);
 }
 
+uint16_t readThresholdCalibration()
+{
+	return ((uint16_t)eeprom_read_byte((uint8_t*)(CHANNEL0_THRESHOLD_H)))<<8 | (uint16_t)(eeprom_read_byte((uint8_t*)(CHANNEL0_THRESHOLD_L)));
+}
+
+void writeThresholdCalibration(uint16_t threshold)
+{
+	eeprom_write_byte((uint8_t*)(CHANNEL0_THRESHOLD_H), 0x03 & (threshold>>8));
+	eeprom_write_byte((uint8_t*)(CHANNEL0_THRESHOLD_L), 0xFF & threshold);
+}
 
 void initializeDelays()
 {
@@ -50,9 +67,14 @@ void initializeDelays()
 	{
 		eeprom_write_byte((uint8_t*)(CHANNEL0_OFF_DELAY), 25);
 		detectorOffDelay = eeprom_read_byte((uint8_t*)(CHANNEL0_OFF_DELAY));
-	}	
+	}
 
-
+	adcValue[ADC_CHANNEL_SETPOINT_0] = readThresholdCalibration();
+	if (adcValue[ADC_CHANNEL_SETPOINT_0] > 1023 || 0x00 == adcValue[ADC_CHANNEL_SETPOINT_0])
+	{
+		writeThresholdCalibration(0x007F); // Arbitrary
+		adcValue[ADC_CHANNEL_SETPOINT_0] = readThresholdCalibration();
+	}
 }
 
 ISR(ADC_vect)
@@ -60,22 +82,17 @@ ISR(ADC_vect)
 	static uint8_t workingChannel = 0;
 	static uint16_t accumulator = 0;
 	static uint8_t count = 0;
-	
+
+	eventFlags &= ~EVENT_DO_ADC_RUN;
+
 	accumulator += ADC;
 	if (++count >= 64)
 	{
 		adcValue[workingChannel] = accumulator / 64;
 		accumulator = 0;
 		count = 0;
-		workingChannel++;
-		
-		ADMUX = (ADMUX & 0xF0) | (workingChannel & 0x01);
-		
-		if (2 == workingChannel)
-		{
-			workingChannel = 0;
-			eventFlags |= EVENT_DO_BD_READ;
-		}
+		//ADMUX = (ADMUX & 0xF0) | (workingChannel & 0x01);
+		eventFlags |= EVENT_DO_BD_READ;
 	}
 
 	if (0 == (eventFlags & EVENT_DO_BD_READ))
@@ -101,6 +118,7 @@ void initialize10HzTimer()
 ISR(TIMER1_COMPA_vect)
 {
 	static uint8_t cntr = 0;
+	
 	eventFlags |= EVENT_DO_ADC_RUN;
 
 	if (++cntr >= 5)
@@ -112,9 +130,6 @@ ISR(TIMER1_COMPA_vect)
 
 uint8_t debounceInputs(uint8_t* ioState, uint8_t rawInput)
 {
-	//  Bit 0 - PD0 - Lock/Manual Control switch (in, needs pullup on)
-	//  Bit 1 - PD1 - Manual Control direction (in, needs pullup on)
-	//  Bit 2 - PC5 - Input Turnout Dir (in, needs pullup on)
 	static uint8_t clock_A=0, clock_B=0;
 	uint8_t delta = rawInput ^ *ioState;
 	uint8_t changes;
@@ -218,9 +233,14 @@ void setAuxLEDOff()
 int main(void)
 {
 	uint8_t auxDetectInputState = 0;
-
+	uint8_t debouncedInputs = 0;
+	uint8_t rawInputs = 0;
+	uint8_t calibrationSwitchCountdown = CALIBRATION_BUTTON_DELAY;
+	uint8_t calibrationCycles = CALIBRATION_CYCLES;
+	uint32_t calibrationAccumulator = 0;
 	// Deal with watchdog first thing
-	MCUSR = 0;					// Clear reset status
+	
+	MCUSR = 0; // Clear reset status
 	wdt_enable(WDTO_1S);
 
 	// Initialize ports 
@@ -250,7 +270,7 @@ int main(void)
 
 	// Pin Assignments for PORTC/DDRC
 	//  PC0 - Analog - Detector 0 current sense
-	//  PC1 - Analog - Detector 0 set point
+	//  PC1 - Digital - Detector 0 set button (pullup on)
 	//  PC2 - Not used
 	//  PC3 - Not used
 	//  PC4 - Not used
@@ -258,7 +278,7 @@ int main(void)
 	//  PC6 - N/A (/RESET pin)
 	//  PC7 - Not used
 	DDRC  = 0b11111100;
-	PORTC = 0b00000000;
+	PORTC = 0b00000010;
 
 	
 	// Pin Assignments for PORTD/DDRD
@@ -286,43 +306,107 @@ int main(void)
 	while(1)
 	{
 		wdt_reset();
+		
+		// If the ISR tells us it's time to run the ADC again and we've handled the last read, 
+		// start the ADC again
+		if ((eventFlags & EVENT_DO_ADC_RUN) && !(eventFlags & EVENT_DO_BD_READ))
+		{
+			ADCSRA |= _BV(ADSC);
+		}
+
+		// If we're in cal mode, do special stuff
+		if (eventFlags & EVENT_CALIBRATION_MODE)
+		{
+			setOccupancyOff();
+			
+			if (calibrationCycles & 0x02)
+			{
+				setAuxLEDOff();
+				setOccupancyLEDOn();
+			} else {
+				setAuxLEDOn();
+				setOccupancyLEDOff();
+			}
+			
+			if (eventFlags & EVENT_DO_BD_READ)
+			{
+				if (calibrationCycles)
+				{
+					calibrationCycles--;
+					calibrationAccumulator += adcValue[ADC_CHANNEL_DETECTOR_0];
+				} else {
+					// last calibration cycle, store values
+					calibrationAccumulator = (47 * calibrationAccumulator) / (50 * CALIBRATION_CYCLES);
+					if (calibrationAccumulator > 5)
+						calibrationAccumulator -= 5;
+					writeThresholdCalibration(calibrationAccumulator);
+					adcValue[ADC_CHANNEL_SETPOINT_0] = readThresholdCalibration();
+					eventFlags &= ~(EVENT_CALIBRATION_MODE);
+					setAuxLEDOff();
+					setOccupancyLEDOff();
+				}
+				eventFlags &= ~(EVENT_DO_BD_READ);
+			}
+			continue;
+		}
+
 
 		// If all the analog inputs have been read, the flag will be set and we
 		// can then process the analog detector inputs
 		if (eventFlags & EVENT_DO_BD_READ)
 		{
-			// Do all the analog magic
-			processDetector();
-
-			// Read the auxilliary occupancy input
+			// Read the auxilliary occupancy input and the calibration switch
 			// It's inverted, so flip the bit around so that auxDetectInputState is
 			// positive logic 
-			debounceInputs(&auxDetectInputState, ((~PINA) & 0x01));
+
+			// Clear the flag and start the next chain of conversions
+			eventFlags &= ~(EVENT_DO_BD_READ);
+
+			rawInputs = ((~PINA) & 0x01) | ((~PINC) & 0x02);
+			debounceInputs(&debouncedInputs, rawInputs);
+
+			if (debouncedInputs & 0x02)
+			{
+				// If the calibration switch is down
+				if (0 != calibrationSwitchCountdown)
+				{
+					calibrationSwitchCountdown--;
+					setAuxLEDOff();
+				} else {
+					setAuxLEDOn();
+				}
+			} else {
+				// Button's up, 
+				if (0 == calibrationSwitchCountdown)
+				{
+					eventFlags |= EVENT_CALIBRATION_MODE;
+					calibrationAccumulator = 0;
+					setAuxLEDOff();
+				}
+				calibrationSwitchCountdown = CALIBRATION_BUTTON_DELAY;
+				calibrationCycles = CALIBRATION_CYCLES;
+			}
+
+			// Normal system behaviour - get the detector, do the analog
+			// hysteresis, set output driver
+
+			// Do all the analog magic
+			processDetector();
+			auxDetectInputState = debouncedInputs & 0x01;
 
 			if (detectorStatus || auxDetectInputState)
 				setOccupancyOn();
 			else
 				setOccupancyOff();
-
-
-			// Clear the flag and start the next chain of conversions
-			eventFlags &= ~(EVENT_DO_BD_READ);
 		}
-
-		if (EVENT_DO_ADC_RUN == (eventFlags & (EVENT_DO_ADC_RUN | EVENT_DO_BD_READ)))
-		{
-			// If the ISR tells us it's time to run the ADC again and we've handled the last read, 
-			// start the ADC again
-			ADCSRA |= _BV(ADSC);
-		}
-
 
 		// This should provide roughly a 1Hz blink rate
 		// It provides a nice proof of life that the ADC is actually doing its thing and is alive.
 
 		if (eventFlags & EVENT_1HZ_BLINK)
 		{
-			setAuxLEDOff();
+			if (CALIBRATION_BUTTON_DELAY == calibrationSwitchCountdown)
+				setAuxLEDOff();
 
 			if (detectorStatus)
 				setOccupancyLEDOn();
@@ -333,7 +417,8 @@ int main(void)
 		}
 		else
 		{
-			setAuxLEDOn();
+			if (CALIBRATION_BUTTON_DELAY == calibrationSwitchCountdown)
+				setAuxLEDOn();
 
 			if (detectorStatus)
 				setOccupancyLEDOn();
