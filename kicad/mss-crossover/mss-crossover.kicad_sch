@@ -2443,7 +2443,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 21276619-2273-485c-941a-c2e9409ed14a)
   )
-  (label "{slash}CAL_SW" (at 149.225 71.755 0)
+  (label "~{CAL_SW}" (at 149.225 71.755 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 3baf440b-4525-4b9d-a708-57146298a732)
   )
