@@ -340,6 +340,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ":ISE_3DModels:RJ45_Amphenol_54602-908LF.step"
+      (offset (xyz 4.445 -6.35 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu")
@@ -607,6 +612,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ":ISE_3DModels:RJ45_Amphenol_54602-908LF.step"
+      (offset (xyz 4.445 -6.35 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (footprint "LED_SMD:LED_0805_2012Metric" (layer "F.Cu")
@@ -809,6 +819,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ":ISE_3DModels:Terminal_Block_2Pos_5mm.stp"
+      (offset (xyz -2.54 -3.556 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (footprint "Package_SO:SOIC-8W_5.3x5.3mm_P1.27mm" (layer "F.Cu")
@@ -864,7 +879,7 @@
       (net 16 "Net-(J2-Pad3)") (pinfunction "PB2") (pintype "bidirectional") (tstamp 90fad0bb-a0e7-4ddd-8381-be3739bd8ace))
     (pad "8" smd rect (at 3.65 -1.905 180) (size 1.7 0.65) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 3 "+3.3V") (pinfunction "VCC") (pintype "power_in") (tstamp 0ee296e1-2709-42b0-91f6-efb15529a677))
-    (model "${KICAD6_3DMODEL_DIR}/Package_SO.3dshapes/SOIC-8W_5.3x5.3mm_P1.27mm.wrl"
+    (model "${KICAD6_3DMODEL_DIR}/Package_SO.3dshapes/SO-8_5.3x6.2mm_P1.27mm.step"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1790,6 +1805,11 @@
       (net 14 "/MSS_GND") (pinfunction "3") (pintype "unspecified") (tstamp 6fad17d9-8044-4c9b-a7d2-72d825a7f8e0))
     (pad "4" smd rect (at 4.5085 -1.27 90) (size 1.7018 1.397) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 15 "Net-(F1-Pad2)") (pinfunction "4") (pintype "unspecified") (tstamp 5756be9f-12b8-464e-b2b2-960f3fa71004))
+    (model ":ISE_3DModels:Toshiba_GullWing_SMD4.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (footprint "ISE_Generic:TE_FSM4JSMA" (layer "F.Cu")
@@ -1838,6 +1858,11 @@
       (net 2 "GND") (pintype "passive") (solder_mask_margin 0.102) (zone_connect 2) (tstamp 6d126652-1c6d-4ed6-81ba-48f3e40eff6c))
     (pad "4" smd roundrect (at 4.55 2.24 90) (size 2.1 1.38) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.1)
       (net 2 "GND") (pintype "passive") (solder_mask_margin 0.102) (zone_connect 2) (tstamp 2059b57a-819d-4393-828f-93509920831f))
+    (model ":ISE_3DModels:FSM4JSMA.step"
+      (offset (xyz 0 0 3.683))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 -90))
+    )
   )
 
   (footprint "TestPoint:TestPoint_Pad_D2.0mm" (layer "B.Cu")
