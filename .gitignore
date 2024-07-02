@@ -5,3 +5,7 @@
 *.hex
 *.elf
 
+# Kicad stuff
+fp-info-cache
+kicad/*/*-backups
+*.kicad_prl
